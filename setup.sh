@@ -11,7 +11,8 @@ echo "PYTHONHOME: "$PYTHONHOME
 echo "PYTHONLIB: "$PYTHONLIB
 echo "==========================================================================="
 
-mkdir .tmp && cd .tmp
+mkdir .tmp
+cd .tmp
 wget http://download.autodesk.com/us/fbx/2019/2019.0/fbx20190_fbxpythonsdk_linux.tar.gz
 tar -xvzf fbx20190_fbxpythonsdk_linux.tar.gz
 yes yes | ./fbx20190_fbxpythonsdk_linux

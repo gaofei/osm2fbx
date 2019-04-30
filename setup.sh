@@ -19,6 +19,11 @@ yes yes | ./fbx20190_fbxpythonsdk_linux
 cp ./lib/Python27_ucs4_x64/* $PYTHONLIB"/python2.7"
 cd .. && rm -rf .tmp
 
+echo "==========================================================================="
+echo " PIP INSTALL START"
+echo "==========================================================================="
+
+pip install -r requirements.txt
 
 echo "==========================================================================="
 echo " INSTALL FINISHED"

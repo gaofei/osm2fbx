@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>osm2fbx.osm.module</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="osm2fbx-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="osm2fbx-module.html">Package&nbsp;osm2fbx</a> ::
+        <a href="osm2fbx.osm-module.html">Package&nbsp;osm</a> ::
+        Module&nbsp;module
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="osm2fbx.osm.module-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="osm2fbx.osm.module-module.html">Module osm2fbx.osm.module</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">imposm</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OSMParser</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor"></a><div id="DataPreprocessor-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="DataPreprocessor-toggle" onclick="return toggle('DataPreprocessor');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html">DataPreprocessor</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DataPreprocessor-expanded"><a name="DataPreprocessor.__init__"></a><div id="DataPreprocessor.__init__-def"><a name="L5"></a><tt class="py-lineno"> 5</tt> <a class="py-toggle" href="#" id="DataPreprocessor.__init__-toggle" onclick="return toggle('DataPreprocessor.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.__init__-expanded"><a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__ways</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor.callback_ways"></a><div id="DataPreprocessor.callback_ways-def"><a name="L9"></a><tt class="py-lineno"> 9</tt> <a class="py-toggle" href="#" id="DataPreprocessor.callback_ways-toggle" onclick="return toggle('DataPreprocessor.callback_ways');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#callback_ways">callback_ways</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">ways</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.callback_ways-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.callback_ways-expanded"><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt class="py-comment"># callback method for ways</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">osmid</tt><tt class="py-op">,</tt> <tt class="py-name">tags</tt><tt class="py-op">,</tt> <tt class="py-name">refs</tt> <tt class="py-keyword">in</tt> <tt class="py-name">ways</tt><tt class="py-op">:</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__ways</tt><tt class="py-op">[</tt><tt class="py-name">osmid</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">refs</tt> </tt>
+</div><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor.callback_coords"></a><div id="DataPreprocessor.callback_coords-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="DataPreprocessor.callback_coords-toggle" onclick="return toggle('DataPreprocessor.callback_coords');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#callback_coords">callback_coords</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">coords</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.callback_coords-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.callback_coords-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">osmid</tt><tt class="py-op">,</tt> <tt class="py-name">lon</tt><tt class="py-op">,</tt> <tt class="py-name">lat</tt> <tt class="py-keyword">in</tt> <tt class="py-name">coords</tt><tt class="py-op">:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">[</tt><tt class="py-name">osmid</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">lon</tt><tt class="py-op">,</tt> <tt class="py-name">lat</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor.__measure_coords_avg"></a><div id="DataPreprocessor.__measure_coords_avg-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="DataPreprocessor.__measure_coords_avg-toggle" onclick="return toggle('DataPreprocessor.__measure_coords_avg');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#__measure_coords_avg">__measure_coords_avg</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.__measure_coords_avg-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.__measure_coords_avg-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">AttributeError</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">l</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">lon</tt><tt class="py-op">,</tt> <tt class="py-name">lat</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">.</tt><tt class="py-name">itervalues</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">lon</tt><tt class="py-op">,</tt> <tt class="py-name">lat</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">out</tt> <tt class="py-op">=</tt> <tt class="py-name">list</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">sum</tt><tt class="py-op">,</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">l</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">avg</tt> <tt class="py-op">=</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt> <tt class="py-name">x</tt><tt class="py-op">/</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">out</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">avg</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor.__normalized_coords"></a><div id="DataPreprocessor.__normalized_coords-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="DataPreprocessor.__normalized_coords-toggle" onclick="return toggle('DataPreprocessor.__normalized_coords');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#__normalized_coords">__normalized_coords</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.__normalized_coords-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.__normalized_coords-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">norm_coord</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">            <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__coords</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-name">norm_coord</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">tuple</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt> <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">x</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-op">*</tt> <tt class="py-number">10000</tt><tt class="py-op">,</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">,</tt> <tt class="py-name">offset</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">norm_coord</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="DataPreprocessor.preprocessing"></a><div id="DataPreprocessor.preprocessing-def"><a name="L38"></a><tt class="py-lineno">38</tt> <a class="py-toggle" href="#" id="DataPreprocessor.preprocessing-toggle" onclick="return toggle('DataPreprocessor.preprocessing');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.DataPreprocessor-class.html#preprocessing">preprocessing</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DataPreprocessor.preprocessing-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DataPreprocessor.preprocessing-expanded"><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">avg</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method osm2fbx.osm.module.DataPreprocessor.__measure_coords_avg()=osm2fbx.osm.module.DataPreprocessor-class.html#__measure_coords_avg"><a title="osm2fbx.osm.module.DataPreprocessor.__measure_coords_avg" class="py-name" href="#" onclick="return doclink('link-0', '__measure_coords_avg', 'link-0');">__measure_coords_avg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">normalized_coords</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method osm2fbx.osm.module.DataPreprocessor.__normalized_coords()=osm2fbx.osm.module.DataPreprocessor-class.html#__normalized_coords"><a title="osm2fbx.osm.module.DataPreprocessor.__normalized_coords" class="py-name" href="#" onclick="return doclink('link-1', '__normalized_coords', 'link-1');">__normalized_coords</a></tt><tt class="py-op">(</tt><tt class="py-name">avg</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__ways</tt><tt class="py-op">,</tt> <tt class="py-name">normalized_coords</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="OSManager"></a><div id="OSManager-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="OSManager-toggle" onclick="return toggle('OSManager');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="osm2fbx.osm.module.OSManager-class.html">OSManager</a><tt class="py-op">:</tt> </tt>
+</div><div id="OSManager-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="OSManager-expanded"><a name="OSManager.__init__"></a><div id="OSManager.__init__-def"><a name="L45"></a><tt class="py-lineno">45</tt> <a class="py-toggle" href="#" id="OSManager.__init__-toggle" onclick="return toggle('OSManager.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.OSManager-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">path</tt><tt class="py-op">,</tt> <tt class="py-param">data_preprocessor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OSManager.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OSManager.__init__-expanded"><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__preprocessor</tt> <tt class="py-op">=</tt> <tt class="py-name">data_preprocessor</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__path</tt> <tt class="py-op">=</tt> <tt class="py-name">path</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-name">way</tt> <tt class="py-op">=</tt> <tt class="py-name">OSMParser</tt><tt class="py-op">(</tt><tt class="py-name">concurrency</tt><tt class="py-op">=</tt><tt class="py-number">4</tt><tt class="py-op">,</tt> <tt class="py-name">ways_callback</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__preprocessor</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method osm2fbx.osm.module.DataPreprocessor.callback_ways()=osm2fbx.osm.module.DataPreprocessor-class.html#callback_ways"><a title="osm2fbx.osm.module.DataPreprocessor.callback_ways" class="py-name" href="#" onclick="return doclink('link-2', 'callback_ways', 'link-2');">callback_ways</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">coord</tt> <tt class="py-op">=</tt> <tt class="py-name">OSMParser</tt><tt class="py-op">(</tt><tt class="py-name">concurrency</tt><tt class="py-op">=</tt><tt class="py-number">4</tt><tt class="py-op">,</tt> <tt class="py-name">coords_callback</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__preprocessor</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method osm2fbx.osm.module.DataPreprocessor.callback_coords()=osm2fbx.osm.module.DataPreprocessor-class.html#callback_coords"><a title="osm2fbx.osm.module.DataPreprocessor.callback_coords" class="py-name" href="#" onclick="return doclink('link-3', 'callback_coords', 'link-3');">callback_coords</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">way</tt><tt class="py-op">.</tt><tt class="py-name">parse</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">coord</tt><tt class="py-op">.</tt><tt class="py-name">parse</tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ways</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coords</tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__preprocessor</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method osm2fbx.osm.module.DataPreprocessor.preprocessing()=osm2fbx.osm.module.DataPreprocessor-class.html#preprocessing"><a title="osm2fbx.osm.module.DataPreprocessor.preprocessing" class="py-name" href="#" onclick="return doclink('link-4', 'preprocessing', 'link-4');">preprocessing</a></tt><tt class="py-op">(</tt><tt class="py-name">path</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
+<a name="OSManager.get_coord_from_nodeid"></a><div id="OSManager.get_coord_from_nodeid-def"><a name="L56"></a><tt class="py-lineno">56</tt> <a class="py-toggle" href="#" id="OSManager.get_coord_from_nodeid-toggle" onclick="return toggle('OSManager.get_coord_from_nodeid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.OSManager-class.html#get_coord_from_nodeid">get_coord_from_nodeid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OSManager.get_coord_from_nodeid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OSManager.get_coord_from_nodeid-expanded"><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coords</tt><tt class="py-op">[</tt><tt class="py-name">id</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"> </tt>
+<a name="OSManager.get_coords_from_wayid"></a><div id="OSManager.get_coords_from_wayid-def"><a name="L59"></a><tt class="py-lineno">59</tt> <a class="py-toggle" href="#" id="OSManager.get_coords_from_wayid-toggle" onclick="return toggle('OSManager.get_coords_from_wayid');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="osm2fbx.osm.module.OSManager-class.html#get_coords_from_wayid">get_coords_from_wayid</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OSManager.get_coords_from_wayid-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OSManager.get_coords_from_wayid-expanded"><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-name">ref</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ways</tt><tt class="py-op">[</tt><tt class="py-name">id</tt><tt class="py-op">]</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-name">coords</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method osm2fbx.osm.module.OSManager.get_coord_from_nodeid()=osm2fbx.osm.module.OSManager-class.html#get_coord_from_nodeid"><a title="osm2fbx.osm.module.OSManager.get_coord_from_nodeid" class="py-name" href="#" onclick="return doclink('link-5', 'get_coord_from_nodeid', 'link-5');">get_coord_from_nodeid</a></tt><tt class="py-op">(</tt><tt class="py-name">co</tt><tt class="py-op">)</tt> <tt class="py-keyword">for</tt> <tt class="py-name">co</tt> <tt class="py-keyword">in</tt> <tt class="py-name">ref</tt><tt class="py-op">]</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">coords</tt> </tt>
+</div></div><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="osm2fbx-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed May  1 16:30:42 2019
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

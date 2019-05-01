@@ -31,7 +31,7 @@ class DataPreprocessor(object):
         norm_coord = {}
         for key in self.__coords:
             val = self.__coords[key]
-            norm_coord[key] = map(lambda x: x[0] - x[1], zip(val, offset))
+            norm_coord[key] = tuple(map(lambda x: (x[0] - x[1]) * 10000, zip(val, offset)))
 
         return norm_coord
 
@@ -53,5 +53,10 @@ class OSManager:
 
         self.ways, self.coords =self.__preprocessor.preprocessing(path)
 
-    def get_coords_from_osmid(self, id):
+    def get_coord_from_nodeid(self, id):
         return self.coords[id]
+
+    def get_coords_from_wayid(self, id):
+        ref = self.ways[id]
+        coords = [self.get_coord_from_nodeid(co) for co in ref]
+        return coords

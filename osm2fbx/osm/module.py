@@ -38,7 +38,7 @@ class DataPreprocessor(object):
     def preprocessing(self, path):
         avg = self.__measure_coords_avg()
         normalized_coords = self.__normalized_coords(avg)
-        return (self.__ways, normalized_coords)
+        return self.__ways, normalized_coords
 
 
 class OSManager:
@@ -53,10 +53,29 @@ class OSManager:
 
         self.ways, self.coords =self.__preprocessor.preprocessing(path)
 
+    def get_pos_from_coords_by_wayid(self, id, offset, sortedby="None"):
+        coords = self.get_coords_from_wayid(id, sortedby)
+
+        if sortedby == "lon":
+            left = [(x + offset, y) for x, y in coords]
+            right = [(x - offset, y) for x, y in coords]
+        else:
+            left = [(x, y + offset) for x, y in coords]
+            right = [(x, y - offset) for x, y in coords]
+
+        return left, right
+
     def get_coord_from_nodeid(self, id):
         return self.coords[id]
 
-    def get_coords_from_wayid(self, id):
+    def get_coords_from_wayid(self, id, sortedby="None"):
         ref = self.ways[id]
         coords = [self.get_coord_from_nodeid(co) for co in ref]
+
+        if sortedby == "lon":
+            coords.sort(key=lambda tup: tup[0])
+        elif sortedby == "lat":
+            coords.sort(key=lambda tup: tup[1])
+
         return coords
+

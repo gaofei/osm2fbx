@@ -7,7 +7,7 @@ from osm2fbx.fbx.module import *
 from osm2fbx.osm.module import *
 from pytest import approx
 
-path = "assets/map.osm"
+path = "assets/small.osm"
 offset = 10000000
 oi = OSMImporter(path, offset)
 structure = oi.get_osm_structure()
@@ -18,12 +18,12 @@ def test_way_structure():
     ws = WayStructure(structure, 10, "red")
     vs = ws.get_way_vertex()
 
-    assert 506252744 in vs
+    assert 29126715 in vs
 
 
 def test_streetbuilder():
     sb = StreetBuilder(manager, scene, structure)
-    sb.draw_scene(10, 20.0, "red")
+    sb.draw_scene(1000, 20.0, "red")
 
 
 def test_fbx_export():

@@ -3,28 +3,10 @@ import fbx
 import FbxCommon
 
 
-"""
-    Structure
-        self.coord_id_list = []
-            self.way_id_list = []
-            self.ways_dict = {}
-            self.coords_dict = {}
-            self.normalized_coords_dict = {}
-            self.average = 0.0
-"""
-
-class FBXStructure:
-    """
-    지금은 그냥 길만 만들지만
-    나중엔 이거 상속해서 건물 스트럭쳐도 만들것이므로
-    확장성에 신경쓰자
-    """
-    def __init__(self, color, structure):
-        self.color = color
-        self.__structure = structure
-
-
 class WayStructure:
+    """
+
+    """
     def __init__(self, structure, pos_Z, color, ):
         self.__color = color
         self.__pos_Z = pos_Z
@@ -32,6 +14,10 @@ class WayStructure:
         self.__processor()
 
     def __processor(self):
+        """
+
+        :return: None
+        """
         way_id_list = self.__structure.way_id_list
         self.__way_vertex = {}
 
@@ -49,7 +35,7 @@ class WayStructure:
 
     def __coords_to_vertex4(self, coords):
         fbx_list = [
-            fbx.FbxVector4(coord[0], coord[1], self.__pos_Z, 1) for coord in coords
+            fbx.FbxVector4(coord[1], coord[0], self.__pos_Z, 1) for coord in coords
         ]
         return fbx_list
 
@@ -58,6 +44,9 @@ class WayStructure:
 
 
 class StreetBuilder:
+    """
+    Build a street
+    """
     def __init__(self, fbx_manager, scene, structure):
         self.fbx_manager = fbx_manager
         self.scene = scene
@@ -89,10 +78,9 @@ class StreetBuilder:
         top_left_vertex = (end - right_vector * thickness)
         top_right_vertex = (end + right_vector * thickness)
 
-        self.__create_mesh(bottom_left_vertex, bottom_right_vertex, top_left_vertex)
-        self.__create_mesh(top_left_vertex, top_right_vertex, bottom_right_vertex)
+        self.__create_mesh(bottom_left_vertex, bottom_right_vertex, top_left_vertex, top_right_vertex)
 
-    def __create_mesh(self, vertex1, vertex2, vertex3):
+    def __create_mesh(self, vertex1, vertex2, vertex3, vertex4):
         mesh = fbx.FbxMesh.Create(self.fbx_manager, "")
         node = self.__create_node()
 
@@ -101,11 +89,18 @@ class StreetBuilder:
         mesh.SetControlPointAt(vertex1, 0)
         mesh.SetControlPointAt(vertex2, 1)
         mesh.SetControlPointAt(vertex3, 2)
+        mesh.SetControlPointAt(vertex4, 3)
 
         mesh.BeginPolygon()
         mesh.AddPolygon(0)
         mesh.AddPolygon(1)
         mesh.AddPolygon(2)
+        mesh.EndPolygon()
+
+        mesh.BeginPolygon()
+        mesh.AddPolygon(1)
+        mesh.AddPolygon(2)
+        mesh.AddPolygon(3)
         mesh.EndPolygon()
 
         node.AddNodeAttribute(mesh)
@@ -119,70 +114,39 @@ class SceneCreator:
     """
     [EN]
     SceneCreator is creating scene and generation 3D node on it.
-    Method List:
-        private:
-            __create_mesh(control_point):
-                Get attribute to preprocessed control point and create mesh
-                (by get_rect_vertex_pos)
-                return type: fbx.FbxMesh
-
-        public:
-            generate_scene():
-                Register polygon in created scene
-
-    [KO]
-    SceneCreator 에서는 씬을 생성하고 해당 씬에 3D 노드를 생성합니다
-
-    Method List:
-        private:
-            __create_polygon_mesh(control_point):
-                전처리된 폴리곤 꼭짓점들을 받아 메쉬를 생성합니다. (get_rect_vertex_pos에 의해)
-                return type: fbx.FbxMesh
-
-        public:
-            generate_scene():
-                생성된 씬 안에 만들어진 폴리곤들을 등록합니다.
     """
-    def __init__(self, manager, scene):
+    def __init__(self, structure=None):
+        manager, scene = FbxCommon.InitializeSdkObjects()
         self.__manager = manager
         self.__scene = scene
         self.__root_node = fbx.FbxNode.Create(self.__manager, "OSM2FBX ROOT")
+        self.__structure = structure
 
-    def __register_node(self, node):
-        self.__root_node.AddChild(node)
+    def register_structure(self, structure):
+        """
+        [EN]
+        Register structure from OSMImporter at SceneCreator Instance
 
-    def create_mesh(self, control_point, name=""):
-        mesh = fbx.FbxMesh.Create(self.__manager, name)
-        mesh.InitControlPoints(4)
-        for idx, cp in enumerate(control_point):
-            print idx
-            print cp
-            mesh.SetControlPointAt(cp, idx)
+        :param structure:
+        :return none:
+        """
+        self.__structure = structure
 
-        vtxId = [
-            0, 1, 2, 3
-        ]
+    def draw_scene(self, pos_z, thickness, color):
+        """
+        [EN]
+        drawing scene, need z pos(thickness way z), thickness(way width), color(way color)
 
-        mesh.BeginPolygon()
-        for id in vtxId:
-            mesh.AddPolygon(id)
-        mesh.EndPolygon()
+        :param pos_z:
+        :param thickness:
+        :param color:
+        :return boolean:
+        """
+        sb = StreetBuilder(self.__manager, self.__scene, self.__structure)
+        sb.draw_scene(pos_z, thickness, color)
+        return True
 
-        return mesh
+    def save_scene(self, path="out.fbx"):
+        FbxCommon.SaveScene(self.__manager, self.__scene, path)
+        return True
 
-    def create_node(self, name=""):
-        node = fbx.FbxNode.Create(self.__manager, name)
-
-        return node
-
-    def create_way_polygon(self, control_points,  z=1, name=""):
-        for cp in control_points:
-            node = self.create_node(name)
-            node.SetNodeAttribute(self.create_mesh(cp))
-            node.SetShadingMode(fbx.FbxNode.eTextureShading)
-            self.__root_node.AddChild(node)
-
-    def generate_scene(self, control_points):
-        root_node = self.__scene.GetRootNode()
-        self.create_way_polygon(control_points)
-        root_node.AddChild(self.__root_node)
